@@ -16,7 +16,7 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         self.send_response(200)
         self.send_header('Content-type', 'text/plain')
         self.end_headers()
-        self.wfile.write(b"Hello from LAHTP HTTP Server!")
+        self.wfile.write(b"Hello from ALAN HTTP Server!")
 
     def log_message(self, format, *args):
         # Disable default logging (optional)
